@@ -1,41 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rider - Request a Ride</title>
-    <script type="module" src="/rider.js"></script>
+  <meta charset="UTF-8">
+  <title>Decentralized Rider</title>
 </head>
 <body>
-    <h1>Request a Ride</h1>
-    <form id="ride-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="text" id="phone" placeholder="Phone Number" required>
-        <input type="text" id="currentLoc" placeholder="Current Location" required>
-        <input type="text" id="destination" placeholder="Destination" required>
-        <input type="number" id="fare" placeholder="Fare in PKR" required>
-        <input type="text" id="vehicle" placeholder="Vehicle Type" required>
-        <input type="number" id="seats" placeholder="Seats Required" required>
-        <button type="submit">Send Ride Request</button>
-    </form>
-    <script type="module">
-        import { createRiderNode } from './rider.js';
+  <h2>🚕 Send Ride Request</h2>
+  <form id="rideForm">
+    <input type="text" id="name" placeholder="Name" required><br>
+    <input type="text" id="phone" placeholder="Phone" required><br>
+    <input type="number" id="fare" placeholder="Fare" required><br>
+    <input type="text" id="vehicle" placeholder="Vehicle" required><br>
+    <input type="number" id="seats" placeholder="Seats" required><br>
+    <button type="submit">Send Request</button>
+  </form>
 
-        document.getElementById('ride-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const details = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                currentLoc: document.getElementById('currentLoc').value,
-                destination: document.getElementById('destination').value,
-                fare: document.getElementById('fare').value,
-                vehicle: document.getElementById('vehicle').value,
-                seats: document.getElementById('seats').value
-            };
+  <pre id="output"></pre>
 
-            const { sendRideRequest } = await createRiderNode();
-            sendRideRequest(details);
-        });
-    </script>
+  <script type="module" src="driver.js"></script>
 </body>
 </html>
+
